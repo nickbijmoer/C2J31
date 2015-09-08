@@ -20,6 +20,8 @@ public class Administratie {
         //todo opgave 1
         this.personen = null;
         this.gezinnen = null;
+        this.nextGezinsNr = 1;
+        this.nextPersNr = 1;
     }
 
     //**********************methoden****************************************
@@ -55,6 +57,7 @@ public class Administratie {
             if (voornaam.trim().isEmpty()) {
                 throw new IllegalArgumentException("lege voornaam is niet toegestaan");
             }
+            
         }
 
         if (anaam.trim().isEmpty()) {
@@ -64,8 +67,20 @@ public class Administratie {
         if (gebplaats.trim().isEmpty()) {
             throw new IllegalArgumentException("lege geboorteplaats is niet toegestaan");
         }
-
         //todo opgave 1
+        if()
+        
+        for(String voornaam : vnamen)
+        {
+            voornaam = voornaam.trim();
+            int lenght = voornaam.length() + 1;
+            voornaam = voornaam.substring(0, 1).toUpperCase() + voornaam.substring(1, lenght).toLowerCase();
+        }
+        
+        
+        anaam = anaam.trim();
+        int temp = anaam.length();
+        
         return null;
     }
 
