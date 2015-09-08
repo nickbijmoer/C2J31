@@ -34,7 +34,29 @@ public class Persoon {
     Persoon(int persNr, String[] vnamen, String anaam, String tvoegsel,
             Calendar gebdat, String gebplaats, Geslacht g, Gezin ouderlijkGezin) {
         //todo opgave 1
-        throw new UnsupportedOperationException();
+        nr = persNr;
+        voornamen = vnamen;
+        achternaam = anaam;
+        tussenvoegsel = tvoegsel;
+        gebDat = gebdat;
+        gebPlaats = gebplaats;
+        geslacht = g;
+        alsOuderBetrokkenIn = new ArrayList<>();
+        
+        for(String naam : vnamen)
+        {
+        StringUtilities.withFirstCapital(naam);
+        }
+        
+        StringUtilities.withFirstCapital(achternaam);
+        StringUtilities.withFirstCapital(gebplaats);
+        
+        
+        
+        if(ouderlijkGezin != null)
+        {
+            setOuders(ouderlijkGezin);
+        }
     }
 
     // ********methoden****************************************
@@ -73,9 +95,17 @@ public class Persoon {
      * @return de voorletters van de voornamen; elke voorletter wordt gevolgd
      * door een punt
      */
-    public String getInitialen() {
+    public String getInitialen() 
+    {
         //todo opgave 1
-        return null;
+        String s = "";
+        for(String letter : voornamen)
+        {
+            
+        s += letter.substring(0, 1) + ".";
+        
+        }
+        return s;
     }
 
     /**
@@ -86,7 +116,16 @@ public class Persoon {
      */
     public String getNaam() {
         //todo opgave 1
-        return null;
+        if(tussenvoegsel == null)
+        {
+        String naam = getInitialen()  + " " + achternaam;
+        }
+        else
+        {
+        String naam = getInitialen() + " " + tussenvoegsel + " " + achternaam;
+        }
+        
+        return naam;
     }
 
     /**
@@ -152,6 +191,11 @@ public class Persoon {
      */
     boolean setOuders(Gezin ouderlijkGezin) {
         //todo opgave 1
+        if(ouderlijkGezin == null)
+        {
+            
+        }
+        
         return false;
     }
 
