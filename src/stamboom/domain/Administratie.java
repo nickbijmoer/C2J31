@@ -1,5 +1,5 @@
 package stamboom.domain;
-//Nick is een homo
+
 import java.util.*;
 
 public class Administratie {
