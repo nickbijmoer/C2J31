@@ -185,8 +185,20 @@ public class Gezin {
      * kinderen uit deze relatie (per kind voorafgegaan door ' -')
      */
     public String beschrijving() {
+        
         //todo opgave 1
-        return null;
+        String beschrijving = nr + " " + ouder1.getNaam() + " " + ouder2.getNaam() + " " + getHuwelijksdatum();
+        
+        if(kinderen != null)
+        {
+            beschrijving += "; kinderen:";
+            
+            for(Persoon kind : kinderen)
+            {
+              beschrijving += " - " + kind.getNaam();
+            }
+        }
+         return null;
     }
 
     /**
@@ -263,7 +275,13 @@ public class Gezin {
      * @return true als dit een gescheiden huwelijk is op datum, anders false
      */
     public boolean heeftGescheidenOudersOp(Calendar datum) {
-        //todo opgave 1
+          //todo opgave 1
+        if(datum != null)
+        {
+        return datum.equals(getScheidingsdatum());
+        }
+       
         return false;
+
     }
 }
