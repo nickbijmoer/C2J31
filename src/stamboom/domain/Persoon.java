@@ -34,29 +34,33 @@ public class Persoon {
     Persoon(int persNr, String[] vnamen, String anaam, String tvoegsel,
             Calendar gebdat, String gebplaats, Geslacht g, Gezin ouderlijkGezin) {
         //todo opgave 1
-        nr = persNr;
-        voornamen = vnamen;
-        achternaam = anaam;
-        tussenvoegsel = tvoegsel;
-        gebDat = gebdat;
-        gebPlaats = gebplaats;
-        geslacht = g;
-        alsOuderBetrokkenIn = new ArrayList<>();
+    
         
-        for(String naam : vnamen)
+         for (int i = 0; i < vnamen.length; i++)
         {
-        StringUtilities.withFirstCapital(naam);
+         vnamen[i] = StringUtilities.withFirstCapital(vnamen[i]);
         }
         
-        StringUtilities.withFirstCapital(achternaam);
-        StringUtilities.withFirstCapital(gebplaats);
+        anaam = StringUtilities.withFirstCapital(anaam);
+        gebplaats = StringUtilities.withFirstCapital(gebplaats);
+        tvoegsel = tvoegsel.trim().toLowerCase();
         
         
+        this.nr = persNr;
+        this.voornamen = vnamen;
+        this.achternaam = anaam;
+        this.tussenvoegsel = tvoegsel;
+        this.gebDat = gebdat;
+        this.gebPlaats = gebplaats;
+        this.geslacht = g;
+        this.alsOuderBetrokkenIn = new ArrayList<>();
         
         if(ouderlijkGezin != null)
         {
             setOuders(ouderlijkGezin);
         }
+        
+        
     }
 
     // ********methoden****************************************
@@ -116,13 +120,14 @@ public class Persoon {
      */
     public String getNaam() {
         //todo opgave 1
+        String naam;
         if(tussenvoegsel == null)
         {
-        String naam = getInitialen()  + " " + achternaam;
+        naam = getInitialen()  + " " + achternaam;
         }
         else
         {
-        String naam = getInitialen() + " " + tussenvoegsel + " " + achternaam;
+        naam = getInitialen() + " " + tussenvoegsel + " " + achternaam;
         }
         
         return naam;
@@ -191,12 +196,16 @@ public class Persoon {
      */
     boolean setOuders(Gezin ouderlijkGezin) {
         //todo opgave 1
-        if(ouderlijkGezin == null)
+        boolean gelukt = false;
+        if(this.ouderlijkGezin == null)
         {
+          this.ouderlijkGezin = ouderlijkGezin;
             
+            ouderlijkGezin.breidUitMet(this);
+          gelukt = true;
         }
         
-        return false;
+        return gelukt;
     }
 
     /**
@@ -248,7 +257,17 @@ public class Persoon {
      */
     public Gezin heeftOngehuwdGezinMet(Persoon andereOuder) {
         //todo opgave 1
+       for(Gezin gezin : alsOuderBetrokkenIn)
+       {
+       if(((gezin.getOuder1() == this && gezin.getOuder2() == andereOuder) || (gezin.getOuder1() == andereOuder && gezin.getOuder2() == this)) && gezin.isOngehuwd())
+       {
+        return gezin;
+       }
+       }
+        
+       
         return null;
+        
     }
 
     /**
@@ -299,6 +318,13 @@ public class Persoon {
      */
     public boolean isGescheidenOp(Calendar datum) {
         //todo opgave 1
+        for(Gezin gezin : alsOuderBetrokkenIn)
+        {
+            if(gezin.getScheidingsdatum() == datum)
+            {
+                return true;
+            }
+        }
         return false;
     }
 
