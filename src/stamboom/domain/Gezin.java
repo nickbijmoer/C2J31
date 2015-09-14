@@ -170,6 +170,11 @@ public class Gezin {
      */
     boolean setHuwelijk(Calendar datum) {
         //todo opgave 1
+        if(huwelijksdatum == null && ouder1.kanTrouwenOp(datum) && ouder2.kanTrouwenOp(datum))
+        {
+            this.huwelijksdatum = datum;
+            return true;
+        }
         return false;
     }
 
@@ -237,6 +242,10 @@ public class Gezin {
      */
     public boolean isHuwelijkOp(Calendar datum) {
         //todo opgave 1
+        if(huwelijksdatum.equals(datum) || huwelijksdatum.before(datum))
+        {
+            return true;
+        }
         return false;
     }
 
