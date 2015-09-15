@@ -320,6 +320,7 @@ public class Administratie {
      */
     public ArrayList<Persoon> getPersonenMetAchternaam(String achternaam) {
         //todo opgave 1
+        achternaam = achternaam.substring(0, 1).toUpperCase() + achternaam.substring(1, achternaam.length()).toLowerCase();
         ArrayList<Persoon> FoundPersons = new ArrayList<Persoon>();
         for(Persoon persoon : personen)
         {
