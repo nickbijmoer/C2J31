@@ -18,10 +18,11 @@ public class Administratie {
      */
     public Administratie() {
         //todo opgave 1
-        this.personen = null;
-        this.gezinnen = null;
+        this.personen = new ArrayList<Persoon>();
+        this.gezinnen = new ArrayList<Gezin>();
         this.nextGezinsNr = 1;
         this.nextPersNr = 1;
+        
     }
 
     //**********************methoden****************************************
@@ -73,7 +74,7 @@ public class Administratie {
         for(String voornaam : vnamen)
         {
             voornaam = voornaam.trim();
-            int lenght = voornaam.length() + 1;
+            int lenght = voornaam.length();
             voornaam = voornaam.substring(0, 1).toUpperCase() + voornaam.substring(1, lenght).toLowerCase();
             if(initialen.length() > 0)
             {
@@ -89,7 +90,7 @@ public class Administratie {
         }
                       
         anaam = anaam.trim();
-        int temp = anaam.length() + 1;
+        int temp = anaam.length();
         anaam = anaam.substring(0, 1).toUpperCase() + anaam.substring(1, temp).toLowerCase();
         
         if(tvoegsel != null)
@@ -98,7 +99,7 @@ public class Administratie {
         }
         
         gebplaats = gebplaats.trim();
-        int temp2 = gebplaats.length() + 1;
+        int temp2 = gebplaats.length();
         gebplaats = gebplaats.substring(0, 1).toUpperCase() + gebplaats.substring(1, temp2).toLowerCase();
         
         String naam = "";
@@ -110,16 +111,23 @@ public class Administratie {
         {
             naam = initialen + " " + anaam;
         }
-        for(Persoon persoon : personen)
+        if(personen!=null && !personen.isEmpty())
         {
-            if(persoon.getNaam() == naam && persoon.getGebDat() == gebdat && persoon.getGebPlaats() == gebplaats)
+            for(Persoon persoon : personen)
             {
-                return null;
+                if(persoon.getNaam() == naam && persoon.getGebDat() == gebdat && persoon.getGebPlaats() == gebplaats)
+                {
+                    return null;
+                }
             }
         }
-        
-        Persoon newPersoon = new Persoon(nextPersNr, vnamen, anaam, tvoegsel, gebdat, gebplaats, geslacht, ouderlijkGezin);
-        nextPersNr++;
+        else
+        {
+            Persoon newPersoon = new Persoon(nextPersNr, vnamen, anaam, tvoegsel, gebdat, gebplaats, geslacht, ouderlijkGezin);
+            nextPersNr++;
+            personen.add(newPersoon);
+            return newPersoon;
+        }   
         return null;
     }
 
