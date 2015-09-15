@@ -282,7 +282,11 @@ public class Gezin {
           //todo opgave 1
         if(datum != null)
         {
-        return datum.equals(getScheidingsdatum());
+        if(datum.equals(getScheidingsdatum()) || datum.after(getScheidingsdatum()))
+        {
+        return true;
+        }
+        
         }
        
         return false;
