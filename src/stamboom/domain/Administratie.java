@@ -121,14 +121,11 @@ public class Administratie {
                 }
             }
         }
-        else
-        {
+        
             Persoon newPersoon = new Persoon(nextPersNr, vnamen, anaam, tvoegsel, gebdat, gebplaats, geslacht, ouderlijkGezin);
             nextPersNr++;
             personen.add(newPersoon);
             return newPersoon;
-        }   
-        return null;
     }
 
     /**

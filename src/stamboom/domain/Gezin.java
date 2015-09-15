@@ -254,10 +254,14 @@ public class Gezin {
      */
     public boolean isHuwelijkOp(Calendar datum) {
         //todo opgave 1
-        if(huwelijksdatum.equals(datum) || huwelijksdatum.before(datum))
+        if(huwelijksdatum != null)
         {
-            return true;
+            if(huwelijksdatum.equals(datum) || huwelijksdatum.before(datum))
+            {
+                return true;
+            }
         }
+        
         return false;
     }
 
