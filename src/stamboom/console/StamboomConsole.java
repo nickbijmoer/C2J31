@@ -41,6 +41,11 @@ public class StamboomConsole {
                 case SHOW_GEZIN:
                     toonGezinsgegevens();
                     break;
+                 case Showstamboom:
+                    for (Persoon person : controller.getAdministratie().getPersonen())
+                    {   
+                        System.out.print(person.stamboomAlsString());
+                    }
             }
             choice = kiesMenuItem();
         }

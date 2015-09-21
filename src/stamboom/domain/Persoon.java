@@ -407,8 +407,14 @@ public class Persoon {
      * ____J.A. Pieterse (MAN) 4-8-1923<br>
      */
     public String stamboomAlsString() {
-        StringBuilder builder = new StringBuilder();
+        
         //todo opgave 2
+        StringBuilder builder = new StringBuilder();
+        ArrayList<PersoonMetGeneratie> stamboomlijst = new ArrayList<>();
+                voegJouwStamboomToe(stamboomlijst, 0);
+         
+        for()
+        
 
         return builder.toString();
     }
