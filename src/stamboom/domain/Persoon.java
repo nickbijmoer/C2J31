@@ -413,7 +413,16 @@ public class Persoon {
         ArrayList<PersoonMetGeneratie> stamboomlijst = new ArrayList<>();
                 voegJouwStamboomToe(stamboomlijst, 0);
          
-        for()
+        for(PersoonMetGeneratie persoon : stamboomlijst)
+        {
+            for(int generatie = 0; generatie < persoon.getGeneratie(); generatie++)
+            {
+               builder.append(' ');
+            }
+            builder.append(persoon.getPersoonsgegevens());
+            builder.append(System.getProperty("line.separator"));
+            
+        }
         
 
         return builder.toString();
