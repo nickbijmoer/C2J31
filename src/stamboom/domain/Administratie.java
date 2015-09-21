@@ -9,6 +9,7 @@ public class Administratie implements java.io.Serializable{
     private int nextPersNr;
     private final List<Persoon> personen;
     private final List<Gezin> gezinnen;
+    private  String Achternaam;
 
     //***********************constructoren***********************************
     /**
@@ -324,7 +325,8 @@ public class Administratie implements java.io.Serializable{
         ArrayList<Persoon> FoundPersons = new ArrayList<Persoon>();
         for(Persoon persoon : personen)
         {
-            if(persoon.getAchternaam() == achternaam)
+            Achternaam = persoon.getAchternaam();
+            if(Achternaam.equalsIgnoreCase(achternaam))
             {
                 FoundPersons.add(persoon);
             }
