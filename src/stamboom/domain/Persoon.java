@@ -338,7 +338,19 @@ public class Persoon {
      */
     public int afmetingStamboom() {
         //todo opgave 2
-        return -1;
+        int aantalpersonen = 1;
+        
+        if(ouderlijkGezin.getOuder1() != null)
+        {
+        aantalpersonen++;
+        ouderlijkGezin.getOuder1().afmetingStamboom();    
+        }
+        if(ouderlijkGezin.getOuder2() != null)
+        {
+        aantalpersonen++;
+        ouderlijkGezin.getOuder2().afmetingStamboom();
+        }
+        return aantalpersonen;
     }
 
     /**
@@ -355,6 +367,20 @@ public class Persoon {
      */
     void voegJouwStamboomToe(ArrayList<PersoonMetGeneratie> lijst, int g) {
         //todo opgave 2
+        PersoonMetGeneratie persoon = new  PersoonMetGeneratie(Persoon.this.toString(), g);
+        lijst.add(persoon);
+        
+        if(ouderlijkGezin.getOuder1() != null)
+        {
+        g = g + 1;
+        ouderlijkGezin.getOuder1().voegJouwStamboomToe(lijst, g);
+        }
+        if(ouderlijkGezin.getOuder2() != null)
+        {
+        g = g + 1;
+        ouderlijkGezin.getOuder2().voegJouwStamboomToe(lijst, g);
+        }
+        
     }
 
     /**
