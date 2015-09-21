@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Properties;
 import stamboom.domain.Administratie;
 
-public class SerializationMediator implements IStorageMediator {
+public class SerializationMediator implements IStorageMediator{
 
     /**
      * bevat de bestandslocatie. Properties is een subclasse van HashTable, een
